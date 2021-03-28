@@ -24,7 +24,6 @@ client.connect((err) => {
   const productCollection = client.db(`${process.env.DB_ProductDBName}`).collection("products");
   const orderCollection = client.db(`${process.env.DB_OrdersDBName}`).collection("orders");
 
-
   app.post("/allProduct", (req, res) => {
     const products = req.body;
     productCollection.insertMany(products).then((result) => {
@@ -68,4 +67,4 @@ client.connect((err) => {
   console.log(" ======DATABASE CONNECTED ======");
 });
 
-app.listen(port);
+app.listen(process.env.PORT || port);
